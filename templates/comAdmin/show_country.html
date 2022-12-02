@@ -1,0 +1,55 @@
+
+      {% extends 'comAdmin/dashboard.html' %}
+
+      {% block content %}
+      <style>
+        table tr th{
+            background-color: #3c8df0;
+            color: #e1e1e1;
+            border: 1px solid #ffffff;
+            text-align: center;
+          }
+        
+        table tr td{
+          background-color: #ffffff;
+          border: 1px solid #e1e1e1;
+          text-align: center;
+        }
+        </style>
+        <div id="page-wrapper">
+            <div id="page-inner">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="page-head-line">Manage Country </h1>
+                        
+                    </div>
+                </div>
+                <table class="table">
+                  <tr>
+                      <th>S.NO</th>
+                      <th>COUNTRY NAME</th>
+                      <th style="text-align: center;">DELETE | EDIT</th>
+                  </tr>
+                  
+              
+                  {% for i in data %}
+                  <tr>
+                    <td>{{forloop.counter}}</td>
+                      <td>{{ i.name }}</td>
+                      <td style="text-align: center;"><a class="btn btn-info" href="{% url 'country_edit' id=i.id %}"><i class="fa fa-edit" style="font-size:20px;"></i></a>    |    <a class="btn btn-danger" href="{% url 'del_country' id=i.id %}"><i class="fa fa-trash" style="font-size:20px;"></i></a></td>
+                      
+                  </tr>
+                  {% endfor %}
+              </table>
+              <a href="/home/"><input type="submit" value="go to Add New Property " class="btn btn-success"></a>
+            </div>
+            
+</div>
+</div>
+{% endblock content %}
+
+
+
+
+
+

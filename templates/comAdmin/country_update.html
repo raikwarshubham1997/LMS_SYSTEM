@@ -1,0 +1,31 @@
+{% extends 'comAdmin/dashboard.html' %}
+
+{% block content %}
+ 
+        <div id="page-wrapper">
+            <div id="page-inner">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="page-head-line">Edit State Name</h1>
+                    </div>
+                </div>
+                <!-- /. ROW  -->
+                <div class="row">
+                    <form method="post">
+                        {% if messages %}
+                        <ul class="messagelist">{% for message in messages %}<li>{{ message }}</li>{% endfor %}</ul>
+                        {% endif %}
+                        {% csrf_token %}
+                        <div class="mb-3 col-md-10">
+                            <label for="exampleInputEmail1" class="form-label">Enter Property</label>
+                            <input type="text" class="form-control" id="exampleInput" name="country" value="{{ c.name }}">
+                            <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+                          </div><br>
+                          
+                          <button type="submit" class="btn btn-primary">Update Data</button>
+                      </form>
+                   
+                </div>
+            </div>
+        </div>
+            {% endblock content %}

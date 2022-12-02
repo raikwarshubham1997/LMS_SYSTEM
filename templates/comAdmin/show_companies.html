@@ -1,0 +1,85 @@
+{% extends 'comAdmin/dashboard.html' %}
+
+{% block content %}
+<style>
+  table tr th{
+      background-color: #3c8df0;
+      color: #e1e1e1;
+      border: 1px solid #ffffff;
+      text-align: center;
+    }
+  
+  table tr td{
+    background-color: #ffffff;
+    border: 1px solid #e1e1e1;
+    text-align: center;
+  }
+  </style>
+<div id="page-wrapper">
+            <div id="page-inner">
+                <div class="row">
+                    <div class="col-md-12">
+                       
+                              <form class="form-inline my-2 my-lg-0">
+                                <input class="form-control mr-sm-2" name="q" type="search" placeholder="Search by, Property name, amount, status" aria-label="Search">
+                                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                              </form>
+                           
+                {% if messages %}
+                  {% for message in messages %}
+                    <p style="background-color: #76e268;padding-left: 20px;">{{ message }}</p>
+                  {% endfor %}
+                {% endif %} 
+                        
+                        <h1 class="page-head-line" style="text-align: center;">Show Company Details</h1>
+                        
+                    </div>
+                
+                       <table  class="table">
+                              <tr>
+                                  <th>S.No</th>
+                                  <th>Owner</th>
+                                  <th>Company Name</th>
+                                  <th>Address</th>
+                                  <th>Email</th>
+                                  <th>Phone No.</th>
+                                  <th>Country</th>
+                                  <th>State</th>
+                                  <th>City</th>
+                                  <th>Created By</th>
+                                  <th colspan="col-2">Operations</th>
+                              </tr>
+                          
+                              {% for i in all_company %}
+                              <tr>
+                                <td>{{forloop.counter}}</td>
+                                  <td>{{ i.owner }}</td>
+                                  <td>{{ i.company_name }}</td>
+                                  <td>{{ i.address }}</td>
+                                  <td>{{ i.email }}</td>
+                                  <td>{{ i.phone_no }}</td>
+                                  <td>{{ i.country }}</td>
+                                  <td>{{ i.state }}</td>
+                                  <td>{{ i.city }}</td>
+                                  <td>{{ i.status }}</td>
+                                 
+                                  <td style="text-align: center;width: 200px;" class="col-2"><a class="btn btn-info" style="border-radius: 10px;" href="{% url 'comp_edit' id=i.id %}"><i class="fa fa-edit" style="font-size:20px;"></i></a>
+                                    &nbsp;&nbsp;&nbsp; || &nbsp;&nbsp;&nbsp;<a class="btn btn-danger" href="{% url 'del_comp' id=i.id %}"><i class="fa fa-trash" style="font-size:20px;"></i></a></td>
+                                  <!-- so updatep/deletep here is url name-->
+                              </tr>
+                              
+                              {% endfor %}
+                              
+                          </table>
+                          <a href="/home/"><input type="submit" value="go to Add New Property " class="btn btn-success"></a>
+                        </div>
+                   </div>
+                  </div>
+                {% endblock content %}
+
+    
+
+
+
+
+
